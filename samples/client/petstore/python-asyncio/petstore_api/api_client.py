@@ -61,7 +61,7 @@ class ApiClient(object):
 
     def __init__(self, configuration=None, header_name=None, header_value=None, cookie=None):
         if configuration is None:
-            configuration = Configuration()
+            configuration = Configuration.get_default()
         self.configuration = configuration
 
         self.pool = ThreadPool()
