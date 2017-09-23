@@ -6,6 +6,7 @@ from __future__ import absolute_import
 
 import urllib3
 
+import copy
 import logging
 import multiprocessing
 import sys
@@ -20,6 +21,18 @@ class Configuration(object):
     Ref: https://github.com/swagger-api/swagger-codegen
     Do not edit the class manually.
     """
+
+    _default_configuration = None
+
+    @classmethod
+    def get_default(cls):
+        if cls._default_configuration is None:
+            return Configuration()
+        return copy.copy(cls._default_configuration)
+
+    @classmethod
+    def set_default(cls, config):
+        cls._default_configuration = copy.copy(config)
 
     def __init__(self):
         """
